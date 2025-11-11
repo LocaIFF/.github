@@ -1,89 +1,91 @@
-# LocaIFF (Lugaiff)
-Kiosk interativo para orientar alunos, visitantes e servidores no IFF – Campus Campos Centro. Uma aplicação web full-screen, touch-friendly, que exibe plantas do campus e calcula a rota mais curta e acessível até o destino.
+# 🗺️ **LocaIFF (Lugaiff)**
+> Kiosk interativo para orientar alunos, visitantes e servidores no **IFF – Campus Campos Centro**.
 
-## Objetivo
-- Ajudar quem chega ao campus a encontrar salas, setores e serviços rapidamente.
-- Disponibilizar um totem/tablet com interface simples, botões grandes e suporte a toque.
-- Exibir rotas otimizadas (menor caminho/custo), considerando acessibilidade.
+<p align="center">
+  https://github.com/SEU_USUARIO/SEU_REPO/actions
+    <img alt="Build" src="https://img.shields.io/badge/build-passing-22c55e?style=hubactions&logoColor=white
+  </a>
+  https://vercel.com/
+    <img alt="Deploy" src="https://img.shields.io/badgetyle=for-the-badge&logo=vercel&logoColor=white
+  </a>
+  LICENSE
+    <img alt="License" src="https://img.shields.io/badge/license-MITdge
+  </a>
+  https://github.com/SEU_USUARIO/SEU_REPO/pulls
+    <img alt="PRs" src="https://img.shields.io/badge/tyle=for-the-badge&logo=github
+  </a>
+</p>
 
-## Funcionalidades (MVP)
-- Visualização do mapa/planta por camadas com zoom e pan.
-- Busca de pontos de interesse (POIs) com hotspots clicáveis.
-- Exibição de rota básica entre origem e destino.
-- Interface responsiva, preparada para modo kiosk.
+---
 
-## Stack Tecnológica
+Uma aplicação web **full-screen**, **touch-friendly**, que exibe **plantas do campus** e calcula a **rota mais curta e acessível** até o destino.
 
-- Frontend (atual, em desenvolvimento)
-  - React 18 (Create React App)
-  - Tailwind CSS 3 (PostCSS + Autoprefixer)
-  - Interação: react-zoom-pan-pinch (gestos de zoom/pan/pinch)
-  - HTTP: Axios (integração com API futura)
-  - Dados atuais: imagens do mapa por camada (public/maps) + hotspots/layers em JS (coordenadas percentuais)
+---
 
-- Backend (planejado)
-  - Node.js + Express (API REST)
-  - ORM: Prisma (ou SQL direto inicialmente)
-  - Cálculo de rotas: pgRouting (pgr_dijkstra/pgr_astar) ou A* no Node (MVP)
+## 🎯 **Objetivo**
 
-- Banco de Dados (planejado)
-  - PostgreSQL + PostGIS (geometria de nós/arestas/POIs)
-  - pgRouting para menor caminho
-  - Tabelas iniciais: nodes (POINT), edges (LINESTRING com custo), pois (POINT, referência a node), buildings/floors
+- 🧭 Ajudar quem chega ao campus a encontrar **salas, setores e serviços** rapidamente.  
+- 📱 Disponibilizar um **totem/tablet** com interface simples, botões grandes e suporte a toque.  
+- ♿ Exibir **rotas otimizadas**, considerando **acessibilidade**.
 
-- Infra/Deploy (sugestões)
-  - Web: Vercel/Netlify (MVP)
-  - API: Render/Railway/Fly.io
-  - DB: Supabase/Render/Aiven com PostGIS habilitado
-  - Kiosk: Chrome/Edge em modo kiosk (Windows) ou Fully Kiosk Browser (Android)
+---
 
-- Qualidade e Colaboração
-  - Lint/format: ESLint + Prettier
-  - Testes: Jest (CRA) + Playwright/Cypress (E2E no fluxo de rota)
-  - GitHub: Issues, Projects (Kanban), Pull Requests com revisão
-  - CI: GitHub Actions (lint + test + build)
+## 🚀 **Funcionalidades (MVP)**
 
-## Arquitetura (visão rápida)
-- Frontend exibe camadas do mapa (PNG/SVG) e hotspots.
-- API fornece:
-  - GET /pois, GET /layers
-  - POST /route?from=…&to=… (retorna geometria/steps)
-- DB armazena grafo do campus e POIs; pgRouting calcula a rota.
+- 🗺️ Visualização do **mapa/planta por camadas** com zoom e pan.  
+- 🔍 Busca de **pontos de interesse (POIs)** com hotspots clicáveis.  
+- ➡️ Exibição de **rota básica** entre origem e destino.  
+- 📱 Interface **responsiva**, preparada para **modo kiosk**.
 
-## Como rodar (Frontend – atual)
-Pré-requisitos: Node.js LTS 18+ e npm.
+---
 
-```powershell
-# Clonar e instalar
-git clone https://github.com/DevJpLg/Lugaiff.git
-cd Lugaiff
-npm install
+## 🛠️ **Stack Tecnológica**
 
-# Executar em desenvolvimento
-npm start
+### 🔹 **Frontend**
+- ⚛️ React 18  
+- 🎨 Tailwind CSS 3 (PostCSS + Autoprefixer)  
+- 🤏 Interação: `react-zoom-pan-pinch` (gestos de zoom/pan/pinch)  
+- 🌐 HTTP: Axios (para futura integração com API)  
+- 🗺️ Mapa: imagens `.webp`/`.png` por camada (`/public/maps`) + hotspots/layers em JS  
 
-# Rodar testes (Jest do CRA)
-npm test
+### 🔹 **Backend** *(planejado)*
+- 🟢 Node.js + Express (API REST)  
+- 🧬 ORM: Prisma (ou SQL direto inicialmente)  
+- 🧠 Cálculo de rotas: `pgRouting` (`pgr_dijkstra` / `pgr_astar`) ou algoritmo A* no Node (MVP)  
 
-# Build de produção
-npm run build
-```
+### 🔹 **Banco de Dados**
+- 🐘 PostgreSQL + PostGIS  
+- 🧭 `pgRouting` para cálculo de menor caminho  
+- 📊 Tabelas:
+  - `nodes` (POINT)  
+  - `edges` (LINESTRING com custo)  
+  - `pois` (POINT, referência a node)  
+  - `buildings`, `floors`
 
-## Organização do trabalho (5 pessoas)
-- Branches: main (prod), develop (integração), feature/nome-da-tarefa
-- PRs: revisão obrigatória (1+ revisor), checks de CI verdes
-- Issues: uma por funcionalidade/bug; labels (feature, bug, map, db, ui)
-- Projects: Kanban (Backlog, Em andamento, Revisão, Pronto)
-- Commits: Conventional Commits (ex.: feat: busca de POIs)
-- CODEOWNERS: definir responsáveis por web, API e DB
+### 🔹 **Infraestrutura / Deploy** *(sugestões)*
+- 🌐 Web: Vercel (MVP)  
+- 🔌 API: Render / Railway / Fly.io  
+- 🗄️ DB: Supabase / Render / Aiven (com PostGIS habilitado)  
+- 🖥️ Kiosk: Fully Kiosk Browser (Android)
 
-## Diretrizes de dados de rota (MVP)
-- nodes: id, name, building_id, floor, geom (POINT), accessible (bool)
-- edges: id, source, target, cost, cost_accessible, geom (LINESTRING), type (hallway, stairs, elevator)
-- pois: id, name, category, node_id, building_id, floor
+---
 
-## Licença
-MIT
-## Time e contato
-Equipe da disciplina de Empreendedorismo e Projetos (IFF – Campos Centro).
-Comunicação principal via GitHub (Issues/PRs/Projects).
+## 🤝 **Qualidade e Colaboração**
+
+- 📌 GitHub:
+  - Issues
+  - Projects (Kanban)
+  - Pull Requests com revisão
+
+---
+
+## 🧱 **Arquitetura (visão rápida)**
+
+```mermaid
+graph TD
+  Frontend -->|Exibe| Mapas[Camadas PNG/WEBP + Hotspots]
+  Frontend -->|Chama| API
+  API -->|GET| /pois & /layers
+  API -->|POST| /route?from=...&to=...
+  API -->|Consulta| DB[(PostgreSQL + PostGIS)]
+  DB -->|Calcula rota| pgRouting
