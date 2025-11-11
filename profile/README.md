@@ -2,6 +2,7 @@
 
 [![Tech React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![Tailwind](https://img.shields.io/badge/TailwindCSS-3-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+!PostgreSQL + PostGIS
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Aplicativo para orientar alunos, visitantes e servidores no IFF – Campus Campos Centro. Exibe o mapa do campus por camadas e calcula a rota mais curta e acessível até o destino solicitado.
@@ -58,7 +59,7 @@ Fluxo
 2) API fornece POIs, layers e calcula rotas.  
 3) DB armazena grafo do campus e metadados; pgRouting calcula menor caminho.
 
-Endpoints (verificar)
+Endpoints (Pendente)
 - GET /pois
 - GET /layers
 - POST /route?from=:id&to=:id  → retorna geometria/steps
@@ -104,7 +105,7 @@ Uitlizar o app: Fully Kiosk Browser (Android)
 
 ---
 
-## Acessibilidade
+## Acessibilidade (Pendente)
 - Cores com contraste adequado (WCAG AA+).
 - Tamanhos de toque ≥ 44px.
 - Rotas acessíveis: marcar arestas com custo/impedâncias (escadas vs rampas/elevadores).
