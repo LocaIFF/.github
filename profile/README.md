@@ -1,91 +1,125 @@
-# 🗺️ **LocaIFF (Lugaiff)**
-> Kiosk interativo para orientar alunos, visitantes e servidores no **IFF – Campus Campos Centro**.
+# LocaIFF · Mapa Interativo do IFF – Campus Campos Centro
 
-<p align="center">
-  https://github.com/SEU_USUARIO/SEU_REPO/actions
-    <img alt="Build" src="https://img.shields.io/badge/build-passing-22c55e?style=hubactions&logoColor=white
-  </a>
-  https://vercel.com/
-    <img alt="Deploy" src="https://img.shields.io/badgetyle=for-the-badge&logo=vercel&logoColor=white
-  </a>
-  LICENSE
-    <img alt="License" src="https://img.shields.io/badge/license-MITdge
-  </a>
-  https://github.com/SEU_USUARIO/SEU_REPO/pulls
-    <img alt="PRs" src="https://img.shields.io/badge/tyle=for-the-badge&logo=github
-  </a>
-</p>
+[![Status](https://img.shields.io/badge/status-MVP-blue)](./)
+[![Tech React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
+[![Tailwind](https://img.shields.io/badge/TailwindCSS-3-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
+[![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](../../pulls)
+
+Aplicativo para orientar alunos, visitantes e servidores no IFF – Campus Campos Centro. Exibe o mapa do campus por camadas e calcula a rota mais curta e acessível até o destino solicitado.
 
 ---
 
-Uma aplicação web **full-screen**, **touch-friendly**, que exibe **plantas do campus** e calcula a **rota mais curta e acessível** até o destino.
+## Objetivo
+- Ajudar quem chega ao campus a encontrar salas, setores e serviços rapidamente.
+- Interface simples para totem/tablet: botões grandes e suporte a toque.
+- Exibir rotas otimizadas (menor caminho/custo), considerando acessibilidade.
+
+## Funcionalidades
+- Visualização do mapa/planta por camadas com zoom e pan.
+- Busca de POIs (pontos de interesse) com hotspots clicáveis.
+- Exibição de rota básica entre origem e destino.
+- Interface responsiva, preparada para modo kiosk.
 
 ---
 
-## 🎯 **Objetivo**
+## Stack Tecnológica
 
-- 🧭 Ajudar quem chega ao campus a encontrar **salas, setores e serviços** rapidamente.  
-- 📱 Disponibilizar um **totem/tablet** com interface simples, botões grandes e suporte a toque.  
-- ♿ Exibir **rotas otimizadas**, considerando **acessibilidade**.
+Frontend
+- React 18
+- Tailwind CSS 3 (PostCSS + Autoprefixer)
+- Gestos: react-zoom-pan-pinch
+- HTTP: Axios (para futura API)
+- Mapas: assets .webp/.png por camada (public/maps) + hotspots/layers em JS/JSON
 
----
+Backend (planejado)
+- Node.js + Express (API REST)
+- ORM: Prisma (ou SQL direto no início)
+- Rotas: pgRouting (pgr_dijkstra/pgr_astar) ou A* no Node (MVP)
 
-## 🚀 **Funcionalidades (MVP)**
+Banco de Dados (planejado)
+- PostgreSQL + PostGIS (geometria de nós/arestas/POIs)
+- pgRouting para menor caminho
+- Tabelas iniciais: 
+  - nodes (POINT)
+  - edges (LINESTRING com custo e acessibilidade)
+  - pois (POINT, referência a node)
+  - buildings, floors
 
-- 🗺️ Visualização do **mapa/planta por camadas** com zoom e pan.  
-- 🔍 Busca de **pontos de interesse (POIs)** com hotspots clicáveis.  
-- ➡️ Exibição de **rota básica** entre origem e destino.  
-- 📱 Interface **responsiva**, preparada para **modo kiosk**.
-
----
-
-## 🛠️ **Stack Tecnológica**
-
-### 🔹 **Frontend**
-- ⚛️ React 18  
-- 🎨 Tailwind CSS 3 (PostCSS + Autoprefixer)  
-- 🤏 Interação: `react-zoom-pan-pinch` (gestos de zoom/pan/pinch)  
-- 🌐 HTTP: Axios (para futura integração com API)  
-- 🗺️ Mapa: imagens `.webp`/`.png` por camada (`/public/maps`) + hotspots/layers em JS  
-
-### 🔹 **Backend** *(planejado)*
-- 🟢 Node.js + Express (API REST)  
-- 🧬 ORM: Prisma (ou SQL direto inicialmente)  
-- 🧠 Cálculo de rotas: `pgRouting` (`pgr_dijkstra` / `pgr_astar`) ou algoritmo A* no Node (MVP)  
-
-### 🔹 **Banco de Dados**
-- 🐘 PostgreSQL + PostGIS  
-- 🧭 `pgRouting` para cálculo de menor caminho  
-- 📊 Tabelas:
-  - `nodes` (POINT)  
-  - `edges` (LINESTRING com custo)  
-  - `pois` (POINT, referência a node)  
-  - `buildings`, `floors`
-
-### 🔹 **Infraestrutura / Deploy** *(sugestões)*
-- 🌐 Web: Vercel (MVP)  
-- 🔌 API: Render / Railway / Fly.io  
-- 🗄️ DB: Supabase / Render / Aiven (com PostGIS habilitado)  
-- 🖥️ Kiosk: Fully Kiosk Browser (Android)
+Infra/Deploy
+- Web (MVP): Vercel
+- API: Render/Railway/Fly.io
+- DB: Supabase/Render/Aiven com PostGIS habilitado
+- Kiosk: Fully Kiosk Browser (Android)
 
 ---
 
-## 🤝 **Qualidade e Colaboração**
+## Arquitetura
+Fluxo
+1) Frontend exibe camadas do mapa (PNG/WEBP) e hotspots sobrepostos.  
+2) API fornece POIs, layers e calcula rotas.  
+3) DB armazena grafo do campus e metadados; pgRouting calcula menor caminho.
 
-- 📌 GitHub:
-  - Issues
-  - Projects (Kanban)
-  - Pull Requests com revisão
+Endpoints (verificar)
+- GET /pois
+- GET /layers
+- POST /route?from=:id&to=:id  → retorna geometria/steps
+
+Estrutura (sugerida)
+```
+/public
+  /maps
+    terreo.webp
+    andar-1.webp
+/src
+  /components
+  /hooks
+  /pages
+  /services   # axios, endpoints
+  /data       # hotspots/layers (MVP)
+  /styles
+```
+
+## Como rodar (Frontend)
+Pré-requisitos: Node.js LTS 18+ e npm.
+
+```powershell
+# Instalar dependências
+npm install
+
+# Ambiente de desenvolvimento
+npm start
+
+# Testes (Jest do CRA)
+npm test
+
+# Build de produção
+npm run build
+```
+
+## Modo de apresentação (Kiosk)
+Uitlizar o app: Fully Kiosk Browser (Android)
+- Habilitar modo Kiosk/Imersivo (esconder barra de status e navegação).
+- Fixar a URL do app (deploy) ou IP local.
+- Ativar reload automático ao perder conexão.
+- Definir timeout de inatividade para tela inicial.
 
 ---
 
-## 🧱 **Arquitetura (visão rápida)**
+## Acessibilidade
+- Cores com contraste adequado (WCAG AA+).
+- Tamanhos de toque ≥ 44px.
+- Rotas acessíveis: marcar arestas com custo/impedâncias (escadas vs rampas/elevadores).
+- Leitura de tela: rótulos ARIA nos botões e resultados.
 
-```mermaid
-graph TD
-  Frontend -->|Exibe| Mapas[Camadas PNG/WEBP + Hotspots]
-  Frontend -->|Chama| API
-  API -->|GET| /pois & /layers
-  API -->|POST| /route?from=...&to=...
-  API -->|Consulta| DB[(PostgreSQL + PostGIS)]
-  DB -->|Calcula rota| pgRouting
+---
+
+## Contribuindo
+- Use Issues e Projects (Kanban) no GitHub.
+- Envie PRs com descrição clara e prints quando possível.
+- Padrões: lint, testes passando e commits descritivos.
+
+---
+
+## Licença
+MIT. Veja o arquivo LICENSE.
