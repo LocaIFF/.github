@@ -2,7 +2,7 @@
 
 [![Tech React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![Tailwind](https://img.shields.io/badge/TailwindCSS-3-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
-!PostgreSQL + PostGIS
+[![Tech SQL](https://img.shields.io/badge/SQL-PostgreSQL%20%2B%20PostGIS-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org)
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Aplicativo para orientar alunos, visitantes e servidores no IFF – Campus Campos Centro. Exibe o mapa do campus por camadas e calcula a rota mais curta e acessível até o destino solicitado.
