@@ -1,10 +1,8 @@
 # LocaIFF · Mapa Interativo do IFF – Campus Campos Centro
 
-[![Status](https://img.shields.io/badge/status-MVP-blue)](./)
 [![Tech React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![Tailwind](https://img.shields.io/badge/TailwindCSS-3-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](../../pulls)
 
 Aplicativo para orientar alunos, visitantes e servidores no IFF – Campus Campos Centro. Exibe o mapa do campus por camadas e calcula a rota mais curta e acessível até o destino solicitado.
 
