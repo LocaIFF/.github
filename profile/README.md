@@ -1,17 +1,18 @@
-# LocaIFF · Mapa Interativo do IFF – Campus Campos Centro
+# 🌐 LocaIFF · Mapa Interativo do IFF – Campus Campos Centro
 
 [![Tech React](https://img.shields.io/badge/React-18-61DAFB?logo=react&logoColor=white)](https://react.dev)
 [![Tailwind](https://img.shields.io/badge/TailwindCSS-3-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com)
 [![Tech SQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?logo=postgresql&logoColor=white)](https://www.postgresql.org)
 [![License MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
-Aplicativo para orientar alunos, visitantes e servidores no IFF – Campus Campos Centro.  
-Exibe o mapa do campus por camadas, mostra pontos de interesse (POIs) e, no MVP atual, simula a rota entre origem e destino no próprio frontend.
+> 🎯 Aplicativo que orienta alunos, visitantes e servidores no IFF Campos Centro.  
+> 🗺️ Mostra o campus em camadas, destaca POIs e simula rotas no frontend  
+> 🛣️ Próximo passo: backend geoespacial com rotas reais via PostGIS + pgRouting.
 
 > **Status do projeto**  
-> - Frontend (React + Tailwind + mapas em imagem): **implementado (MVP)**  
-> - Rotas: **simuladas no frontend** (sem backend ainda)  
-> - Backend + banco geoespacial (PostgreSQL/PostGIS + pgRouting): **planejado**
+> - Frontend (React + Tailwind + mapas em imagem): **implementado**  
+> - Rotas: **simuladas no frontend** (sem backend ainda) **Planejado**
+> - Backend + banco geoespacial (PostgreSQL/PostGIS + pgRouting): **Planejado**
 
 ---
 
@@ -119,56 +120,6 @@ Estes endpoints ainda **não existem** no repositório. São apenas o desenho da
 
 ---
 
-## Estrutura do Projeto
-
-### Estrutura atual (MVP)
-
-```text
-/public
-  /maps
-    terreo.png
-    andar1.png
-    ...
-  index.html
-  manifest.json
-  service-worker.js
-
-/src
-  /components
-    MapViewer.jsx
-    ...
-  /data
-    hotspots.js
-    layers.js
-    ...
-  /utils
-    routeUtils.js
-    ...
-  api.js
-  App.jsx
-  index.jsx
-
-package.json
-tailwind.config.js
-postcss.config.js
-README.md
-```
-
-### Estrutura futura (sugerida)
-
-```text
-/src
-  /components
-  /hooks
-  /pages
-  /services   # axios e integração com API real
-  /data       # hotspots/layers (MVP ou fallback)
-  /styles
-  /utils
-```
-
----
-
 ## Como rodar (Frontend)
 
 **Pré-requisitos:**
@@ -204,18 +155,6 @@ Sugestão de uso em totem/tablet Android com **Fully Kiosk Browser**:
 3. Ativar reload automático ao perder conexão.
 4. Definir um timeout de inatividade para voltar à tela inicial.
 5. Manter o dispositivo travado apenas no app do navegador kiosk.
-
----
-
-## Acessibilidade (planejada / em evolução)
-
-- Paleta de cores com contraste adequado (WCAG AA+).
-- Tamanhos de alvo de toque ≥ 44px.
-- Rotas acessíveis:
-  - Marcar arestas com custo/impedâncias (escadas vs rampas/elevadores).
-  - Diferenciar tipos de percurso por usuário (cadeirante, etc.).
-- Suporte a leitores de tela:
-  - Rótulos ARIA nos botões, campos de busca e resultados.
 
 ---
 
