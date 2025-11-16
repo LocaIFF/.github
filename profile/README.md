@@ -25,7 +25,7 @@
 
 ## 🧭 Roadmap rápido
 
-- **Agora**: MVP React 18 + Tailwind + assets PNG.
+- **Agora**: React 18 + Tailwind + assets PNG.
 - **Curto prazo**: API Node/Express, rotas reais (Dijkstra/A*), persistência de POIs.
 - **Médio prazo**: Perfis de rota (acessível vs. rápida), deploy kiosk com Fully Kiosk Browser.
 
@@ -55,7 +55,7 @@
 npm install
 npm start       # http://localhost:3000
 npm test        # Jest (CRA)
-npm run build   # bundle produção
+npm run build   # Produção
 ```
 
 Pré-requisitos: Node.js 18+.
